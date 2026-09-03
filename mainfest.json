@@ -1,0 +1,19 @@
+{
+  "name": "Sabbora",
+  "short_name": "Sabbora",
+  "start_url": "/AssignOrg/",
+  "scope": "/AssignOrg/",
+  "display": "standalone",
+  "dir": "rtl",
+  "lang": "ar",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
