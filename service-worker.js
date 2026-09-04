@@ -3,7 +3,8 @@ const ASSETS_TO_CACHE = [
   '/Sabbora/',
   '/Sabbora/index.html',
   '/Sabbora/manifest.json',
-  '/Sabbora/icon-512.jpeg'
+  '/Sabbora/icon-512.png',
+  'https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap'
 ];
 
 self.addEventListener('install', (event) => {
@@ -25,7 +26,9 @@ self.addEventListener('fetch', (event) => {
       if (cachedResponse) {
         return cachedResponse;
       }
-      return fetch(event.request);
+      return fetch(event.request).catch(() => {
+        // يتفادى ظهور خطأ uncaught promise عند فصل الشبكة
+      });
     })
   );
 });
