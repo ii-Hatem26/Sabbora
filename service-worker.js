@@ -1,9 +1,9 @@
 const CACHE_NAME = 'sabbora-cache-v1';
 const ASSETS_TO_CACHE = [
-  '/AssignOrg/',
-  '/AssignOrg/index.html',
-  '/AssignOrg/manifest.json',
-  '/AssignOrg/icon-512.png'
+  '/Sabbora/',
+  '/Sabbora/index.html',
+  '/Sabbora/manifest.json',
+  '/Sabbora/icon-512.png'
 ];
 
 // تثبيت الـ Service Worker وتخزين الملفات
