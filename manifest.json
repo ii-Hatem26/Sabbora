@@ -2,7 +2,7 @@
   "name": "Sabbora",
   "short_name": "Sabbora",
   "start_url": "/AssignOrg/",
-  "scope": "/AssignOrg/",
+  "scope": "/Sabbora/",
   "display": "standalone",
   "dir": "rtl",
   "lang": "ar",
