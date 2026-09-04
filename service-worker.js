@@ -3,7 +3,7 @@ const ASSETS_TO_CACHE = [
   '/Sabbora/',
   '/Sabbora/index.html',
   '/Sabbora/manifest.json',
-  '/Sabbora/icon-512.png'
+  '/Sabbora/icon-512.jpeg'
 ];
 
 self.addEventListener('install', (event) => {
