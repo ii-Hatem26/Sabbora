@@ -1,7 +1,7 @@
 {
   "name": "Sabbora",
   "short_name": "Sabbora",
-  "start_url": "/AssignOrg/",
+  "start_url": "/Sabbora/",
   "scope": "/Sabbora/",
   "display": "standalone",
   "dir": "rtl",
