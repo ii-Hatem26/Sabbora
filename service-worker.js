@@ -1,23 +1,37 @@
-const CACHE_NAME = 'sabbora-cache-v2';
+const CACHE_NAME = 'sabbora-cache-v4';
 const ASSETS_TO_CACHE = [
   '/Sabbora/',
   '/Sabbora/index.html',
   '/Sabbora/manifest.json',
-  '/Sabbora/icon-512.png',
-  'https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap'
+  '/Sabbora/icon-192.png',
+  '/Sabbora/icon-512.jpeg'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+      return Promise.allSettled(
+        ASSETS_TO_CACHE.map((url) =>
+          cache.add(url).catch((err) => console.log('Failed to cache:', url, err))
+        )
+      );
     })
   );
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener('fetch', (event) => {
@@ -26,9 +40,7 @@ self.addEventListener('fetch', (event) => {
       if (cachedResponse) {
         return cachedResponse;
       }
-      return fetch(event.request).catch(() => {
-        // يتفادى ظهور خطأ uncaught promise عند فصل الشبكة
-      });
+      return fetch(event.request).catch(() => {});
     })
   );
 });
